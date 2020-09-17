@@ -1,1 +1,1 @@
-web: gunicorn desafiojc.wsgi
+gunicorn desafiojc.wsgi
