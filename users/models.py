@@ -19,6 +19,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
+    
+    class Meta:
+        verbose_name = u'Usuário'
+        verbose_name_plural = u'Usuários'
+        ordering = ['-id']
 
     def __str__(self):
         return self.username
