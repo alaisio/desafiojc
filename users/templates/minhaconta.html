@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- Short Intro Start-->
+<div class="content-section-b">
+    <div class="container">
+        <div class="wrapper">
+            <div id="formContent">
+                <div class="owner-message">
+                    <h3>Minha Conta</h3>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <h5 class="text-heading {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h3>
+                        {% endfor %}
+                        {% endif %}
+                </div>
+                <form id="altera_cadastro" class="well form-horizontal" action="{% url 'minhaconta' %}" method="post"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" class="fadeIn first" name="username" value="{{ user.username }}" />
+                    <input type="text" class="fadeIn third" name="email" value="{{ user.email }}" />
+                    <input type="text" class="fadeIn third" name="name" value="{{ user.name }}" />
+                    
+                    
+                    
+                    <input type="submit" class="fadeIn fourth" value="Salvar alterações" />
+                    
+                </form>
+
+                
+                <a class="lesq" href="/minha-conta/alterar-senha"><i class="fa fa-fw fa-edit"></i> Alterar senha</a>
+                <a class="ldir" href="/sair"><i class="fa fa-fw fa-power-off"></i> Sair</a>
+                <div class="owner-message">
+
+                <!--<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form_profile.as_p }}
+                    <div class="form-group">
+                        <div class="col-lg-3">
+                            <button type="submit" class="btn btn-success">Enviar</button>
+                        </div>
+                    </div>
+                </form>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    {% endblock %}

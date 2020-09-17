@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- Short Intro Start-->
+<div class="content-section-b">
+    <div class="container">
+        <div class="wrapper">
+            <div id="formContent">
+                <!-- Tabs Titles -->
+
+                <!-- Icon -->
+                <div class="owner-message">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <h5 class="text-heading {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h3>
+                        {% endfor %}
+                        {% endif %}
+                </div>
+
+                <!-- Login Form -->
+                <form id="login_form" class="well form-horizontal" action="{% url 'index' %}" method="post"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" id="username" class="fadeIn second" name="username" placeholder="usuário">
+                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="senha">
+                    <input type="submit" class="fadeIn fourth" value="ENTRAR">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

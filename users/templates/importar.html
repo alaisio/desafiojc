@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- Short Intro Start-->
+<div class="content-section-b">
+    <div class="container">
+        <div class="wrapper">
+            <div id="formContent importacao">
+                <div class="owner-message">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <h5 class="text-heading {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h3>
+                        {% endfor %}
+                        {% endif %}
+                        {% for i in listusers %}
+                        <h4>{{ i.username }}, {{ i.email }}, {{ i.name }}</h4>
+                        <p>&nbsp;</p>
+                        {% endfor %}
+
+
+                        </legend><br>
+
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

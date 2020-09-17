@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- Short Intro Start-->
+<div class="content-section-b">
+    <div class="container">
+        <div class="wrapper">
+            <div id="formContent">
+                <div class="owner-message">
+                    <h3>Minha Conta</h3>
+                    <h4>Altere sua senha</h4>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <h5 class="text-heading {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h3>
+                        {% endfor %}
+                        {% endif %}
+                </div>
+                <form id="altera_cadastro" class="well form-horizontal" action="{% url 'alterarsenha' %}" method="post"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="password" class="fadeIn second" name="new_password1" required
+                        placeholder="nova senha" />
+                    <p><span class="helptext">
+                            <ul>
+                                <li>Sua senha não pode ser muito parecida com o resto das suas informações pessoais.
+                                </li>
+                                <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
+                                <li>Sua senha não pode ser uma senha comumente utilizada.</li>
+                                <li>Sua senha não pode ser inteiramente numérica.</li>
+                            </ul>
+                        </span></p>
+                    <input type="password" class="fadeIn third" name="new_password2" required
+                        placeholder="confirme a nova senha" />
+
+
+                    <input type="submit" class="fadeIn fourth" value="Salvar alterações" />
+
+                </form>
+                <!--<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <h4 class="text-heading {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</h3>
+                        {% endfor %}
+                        {% endif %}
+                    {{ form_asenha.as_p }}
+                    
+                    <div class="form-group">
+                        <div class="col-lg-3">
+                            <button type="submit" class="btn btn-success">Enviar</button>
+                        </div>
+                    </div>
+                </form>-->
+                <a class="ldir" href="/sair"><i class="fa fa-fw fa-power-off"></i> Sair</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
